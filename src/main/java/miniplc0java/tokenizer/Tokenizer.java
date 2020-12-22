@@ -108,7 +108,7 @@ public class Tokenizer {
             case ')':
             	return new Token(TokenType.RParen, ')', it.previousPos(), it.currentPos());
             case ';':
-                return new Token(TokenType.RParen, ')', it.previousPos(), it.currentPos());
+                return new Token(TokenType.Semicolon, ';', it.previousPos(), it.currentPos());
             default:
                 // 不认识这个输入，摸了
                 throw new TokenizeError(ErrorCode.InvalidInput, it.previousPos());
