@@ -258,7 +258,7 @@ public final class Analyser {
             	analyseExpression(); // 分析初始化的表达式
                 initialized = true;
             	}
-            
+            initializeSymbol(nameToken.getValueString(),null);
             
 
             // 分号
@@ -269,7 +269,6 @@ public final class Analyser {
             // 如果没有初始化的话在栈里推入一个初始值
             if (!initialized) {
                 instructions.add(new Instruction(Operation.LIT, 0));
-                initializeSymbol(nameToken.getValueString(),null);
             }
         }
     }
