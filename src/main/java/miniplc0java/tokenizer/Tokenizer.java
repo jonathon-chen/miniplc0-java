@@ -37,7 +37,7 @@ public class Tokenizer {
         }
     }
 
-    private Token lexUInt() {
+    private Token lexUInt() throws TokenizeError{
         // 请填空：
        // 直到查看下一个字符不是数字为止:	
         // -- 前进一个字符，并存储这个字符
@@ -107,6 +107,8 @@ public class Tokenizer {
             	return new Token(TokenType.LParen, '(', it.previousPos(), it.currentPos());
             case ')':
             	return new Token(TokenType.RParen, ')', it.previousPos(), it.currentPos());
+            case ';':
+                return new Token(TokenType.RParen, ')', it.previousPos(), it.currentPos());
             default:
                 // 不认识这个输入，摸了
                 throw new TokenizeError(ErrorCode.InvalidInput, it.previousPos());
