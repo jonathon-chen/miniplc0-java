@@ -46,15 +46,18 @@ public class Tokenizer {
         // 解析成功则返回无符号整数类型的token，否则返回编译错误
         //
         // Token 的 Value 应填写数字的值
-        skipSpaceCharacters();
     	String s="";
     	while (Character.isDigit(it.peekChar()))
         {
         	s=s+it.nextChar();
+        }    	
+        try{
+            int num=Integer.parseInt(s);
+            return new Token(TokenType.Uint, num, it.previousPos(), it.currentPos());
+        }catch(Exception){
+            throw new TokenizeError(ErrorCode.InvalidInput, it.previousPos());
         }
-    	
-        int num=Integer.parseInt(s);
-    	return new Token(TokenType.Uint, num, it.previousPos(), it.currentPos());  
+    	  
     }
 
     private Token lexIdentOrKeyword() throws TokenizeError {
@@ -67,7 +70,6 @@ public class Tokenizer {
         // -- 否则，返回标识符
         //
         // Token 的 Value 应填写标识符或关键字的字符串
-        skipSpaceCharacters();
     	String s="";
     	while(Character.isLetterOrDigit(it.peekChar()))
     	{
