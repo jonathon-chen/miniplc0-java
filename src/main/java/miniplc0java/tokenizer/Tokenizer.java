@@ -2,7 +2,6 @@ package miniplc0java.tokenizer;
 
 import miniplc0java.error.TokenizeError;
 import miniplc0java.error.ErrorCode;
-
 public class Tokenizer {
 
     private StringIter it;
@@ -53,13 +52,9 @@ public class Tokenizer {
         {
         	s=s+it.nextChar();
         }
-    	if(s.isnumeric())
-        {int num=Integer.parseInt(s);
-    	return new Token(TokenType.Uint, num, it.previousPos(), it.currentPos());
-        }else{
-            throw new TokenizeError(ErrorCode.InvalidInput, it.previousPos());
-        }
-         
+    	
+        int num=Integer.parseInt(s);
+    	return new Token(TokenType.Uint, num, it.previousPos(), it.currentPos());  
     }
 
     private Token lexIdentOrKeyword() throws TokenizeError {
