@@ -254,23 +254,22 @@ public final class Analyser {
             // 下个 token 是等于号吗？如果是的话分析初始化
             if(check(TokenType.Equal))
             {
-            	initializeSymbol(nameToken.getValueString(),nameToken.getStartPos());
+            	
             	analyseExpression(); // 分析初始化的表达式
-            	initialized = true;
+                initialized = true;
             	}
             
             
 
             // 分号
-            expect(TokenType.Semicolon);
-            
+            expect(TokenType.Semicolon);        
             // 加入符号表，请填写名字和当前位置（报错用）
             String name = (String)nameToken.getValue();
-            addSymbol(name, true, false, nameToken.getStartPos());
-
+            addSymbol(name, initialized, false, nameToken.getStartPos());
             // 如果没有初始化的话在栈里推入一个初始值
             if (!initialized) {
                 instructions.add(new Instruction(Operation.LIT, 0));
+                initializeSymbol(nameToken.getValueString(),null);
             }
         }
     }
