@@ -47,6 +47,7 @@ public class Tokenizer {
         // 解析成功则返回无符号整数类型的token，否则返回编译错误
         //
         // Token 的 Value 应填写数字的值
+        skipSpaceCharacters();
     	String s="";
     	while (it.peekChar()>='0'&&it.peekChar()<='9')
         {
@@ -67,8 +68,9 @@ public class Tokenizer {
         // -- 否则，返回标识符
         //
         // Token 的 Value 应填写标识符或关键字的字符串
+        skipSpaceCharacters();
     	String s="";
-    	while((it.peekChar()>='0'&&it.peekChar()<='9')||(it.peekChar()>='A'&&it.peekChar()<='z'))
+    	while(Character.isLetterOrDigit(it.peekChar()))
     	{
     		s=s+it.nextChar();
     		switch (s) {
