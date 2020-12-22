@@ -53,9 +53,13 @@ public class Tokenizer {
         {
         	s=s+it.nextChar();
         }
-    	int num=Integer.parseInt(s);
+    	if(s.isnumeric())
+        {int num=Integer.parseInt(s);
     	return new Token(TokenType.Uint, num, it.previousPos(), it.currentPos());
-        
+        }else{
+            throw new TokenizeError(ErrorCode.InvalidInput, it.previousPos());
+        }
+         
     }
 
     private Token lexIdentOrKeyword() throws TokenizeError {
