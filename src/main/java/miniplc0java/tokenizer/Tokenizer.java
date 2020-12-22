@@ -68,7 +68,7 @@ public class Tokenizer {
         //
         // Token 的 Value 应填写标识符或关键字的字符串
     	String s="";
-    	while((it.peekChar()>='0'&&it.peekChar()<='9')||(it.peekChar()>='a'&&it.peekChar()<='Z'))
+    	while((it.peekChar()>='0'&&it.peekChar()<='9')||(it.peekChar()>='A'&&it.peekChar()<='z'))
     	{
     		s=s+it.nextChar();
     		switch (s) {
