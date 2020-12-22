@@ -37,7 +37,7 @@ public class Tokenizer {
         }
     }
 
-    private Token lexUInt() throws TokenizeError {
+    private Token lexUInt() {
         // 请填空：
        // 直到查看下一个字符不是数字为止:	
         // -- 前进一个字符，并存储这个字符
@@ -50,14 +50,9 @@ public class Tokenizer {
     	while (Character.isDigit(it.peekChar()))
         {
         	s=s+it.nextChar();
-        }    	
-        try{
+        }    	       
             int num=Integer.parseInt(s);
-            return new Token(TokenType.Uint, num, it.previousPos(), it.currentPos());
-        }catch(Exception){
-            throw new TokenizeError(ErrorCode.InvalidInput, it.previousPos());
-        }
-    	  
+            return new Token(TokenType.Uint, num, it.previousPos(), it.currentPos());  	  
     }
 
     private Token lexIdentOrKeyword() throws TokenizeError {
