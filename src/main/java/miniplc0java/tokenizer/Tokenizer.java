@@ -49,7 +49,7 @@ public class Tokenizer {
         // Token 的 Value 应填写数字的值
         skipSpaceCharacters();
     	String s="";
-    	while (it.peekChar()>='0'&&it.peekChar()<='9')
+    	while (Character.isDigit(it.peekChar()))
         {
         	s=s+it.nextChar();
         }
