@@ -252,17 +252,16 @@ public final class Analyser {
             
             // 下个 token 是等于号吗？如果是的话分析初始化
             if(check(TokenType.Equal))
-            {
-            	initializeSymbol(nameToken.getValueString(),nameToken.getStartPos());
-            	analyseExpression(); // 分析初始化的表达式
-            	initialized = true;
+            {           	
+            	analyseExpression(); // 分析初始化的表达	
             	}
             
             
 
             // 分号
             expect(TokenType.Semicolon);
-            
+            initializeSymbol(nameToken.getValueString(),nameToken.getStartPos());
+            initialized = true;
             // 加入符号表，请填写名字和当前位置（报错用）
             String name = (String)nameToken.getValue();
             addSymbol(name, initialized, false, nameToken.getStartPos());
