@@ -366,6 +366,7 @@ public final class Analyser {
         // 把结果保存
         var offset = getOffset(name, null);
         instructions.add(new Instruction(Operation.STO, offset));
+        expect(TokenType.Semicolon);
     }
 
     private void analyseOutputStatement() throws CompileError {
@@ -442,6 +443,7 @@ public final class Analyser {
             instructions.add(new Instruction(Operation.LIT, value));
         } else if (check(TokenType.LParen)) {
             // 是表达式
+            Token tokenname=next();
             analyseExpression();// 调用相应的处理函数
              expect(TokenType.RParen);
         } else {
