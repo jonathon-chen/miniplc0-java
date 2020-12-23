@@ -256,18 +256,21 @@ public final class Analyser {
             	analyseExpression(); // 分析初始化的表达	            	
                 initialized = true;
             }
+            expect(TokenType.Semicolon); // 分号
             
-            
-
-           expect(TokenType.Semicolon); // 分号
-            
-            // 加入符号表，请填写名字和当前位置（报错用）
+            // 加入符号表，请填写名字和当前位置（报错用
             String name = (String)nameToken.getValue();
-            addSymbol(name, initialized, false, nameToken.getStartPos());            
-            // 如果没有初始化的话在栈里推入一个初始值
+            addSymbol(name, initialized, false, nameToken.getStartPos()); 
             if (!initialized) {
                 instructions.add(new Instruction(Operation.LIT, 0));
             }
+           
+            
+     
+            
+                       
+            // 如果没有初始化的话在栈里推入一个初始值
+            
         }
     }
 
