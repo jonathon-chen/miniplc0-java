@@ -443,6 +443,7 @@ public final class Analyser {
         } else if (check(TokenType.LParen)) {
             // 是表达式
             analyseExpression();// 调用相应的处理函数
+             expect(TokenType.RParen);
         } else {
             // 都不是，摸了
             throw new ExpectedTokenError(List.of(TokenType.Ident, TokenType.Uint, TokenType.LParen), next());
