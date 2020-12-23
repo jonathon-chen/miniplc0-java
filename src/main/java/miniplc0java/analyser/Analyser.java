@@ -263,12 +263,7 @@ public final class Analyser {
             addSymbol(name, initialized, false, nameToken.getStartPos()); 
             if (!initialized) {
                 instructions.add(new Instruction(Operation.LIT, 0));
-            }
-           
-            
-     
-            
-                       
+            }                
             // 如果没有初始化的话在栈里推入一个初始值
             
         }
@@ -287,8 +282,7 @@ public final class Analyser {
             } else if (peeked.getTokenType() == TokenType.Print) {
             	analyseOutputStatement();// 调用相应的分析函数
                 
-            } 
-            if(peeked.getTokenType() == TokenType.Semicolon)
+            } else if(peeked.getTokenType() == TokenType.Semicolon)
             {
             	expect(TokenType.Semicolon);
             }
@@ -377,12 +371,9 @@ public final class Analyser {
 
         expect(TokenType.Print);
         expect(TokenType.LParen);
-
         analyseExpression();
-
         expect(TokenType.RParen);
         expect(TokenType.Semicolon);
-
         instructions.add(new Instruction(Operation.WRT));
     }
 
