@@ -361,7 +361,7 @@ public final class Analyser {
             // 标识符是常量
             throw new AnalyzeError(ErrorCode.AssignToConstant, tokenname.getStartPos());
         }
-        
+        expect(TokenType.Equal);
         analyseExpression();
         // 设置符号已初始化
         initializeSymbol(name, null);
